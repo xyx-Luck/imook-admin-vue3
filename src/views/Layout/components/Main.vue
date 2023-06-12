@@ -1,0 +1,3 @@
+<template>
+  <div class="main">主体</div>
+</template>

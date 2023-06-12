@@ -29,7 +29,10 @@
           </span>
         </el-form-item>
         <el-form-item prop="username">
-          <el-button type="primary" style="width: 100%; margin-bottom: 30px"
+          <el-button
+            type="primary"
+            style="width: 100%; margin-bottom: 30px"
+            @click="Dologin"
             >登录</el-button
           >
         </el-form-item>
@@ -40,8 +43,13 @@
 <script lang="ts" setup>
 import { Avatar, Lock, Hide } from "@element-plus/icons-vue";
 import { reactive, ref } from "vue";
+import { useStore } from "vuex";
+import { useRouter } from "vue-router";
 import type { FormInstance, FormRules } from "element-plus";
 import { IruleForm } from "@/views/Login/types";
+
+const store = useStore();
+const router = useRouter();
 // 处理登录框显示密码还是显示文本
 const eyeShow = ref<boolean>(true);
 const changeEyes = function () {
@@ -60,6 +68,18 @@ const rules = reactive<FormRules>({
     { min: 6, message: "密码长度至少为6位", trigger: "blur" },
   ],
 });
+//进行登录动作
+const Dologin = () => {
+  // 1.判断表单验证是否通过
+  ruleFormRef.value?.validate((valid) => {
+    if (!valid) return false;
+    // 进行登录操作
+    store.dispatch("user/login", ruleForm.value);
+    //登录完成后进行页面跳转
+    router.push("/");
+  });
+  // 2.
+};
 </script>
 <style scoped lang="scss">
 .login {
