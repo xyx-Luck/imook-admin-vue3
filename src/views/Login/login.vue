@@ -76,7 +76,7 @@ const Dologin = () => {
     // 进行登录操作
     store.dispatch("user/login", ruleForm.value);
     //登录完成后进行页面跳转
-    router.push("/");
+    // router.push("/");
   });
   // 2.
 };

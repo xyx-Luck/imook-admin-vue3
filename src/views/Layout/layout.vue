@@ -1,15 +1,5 @@
 <template>
   <div class="common-layout">
-    <!-- <el-container>
-      <el-header>
-        <NavBar />
-      </el-header>
-      <el-container>
-        <el-aside width="200px"><Menu></Menu></el-aside>
-        <el-main><Main></Main></el-main>
-      </el-container>
-    </el-container> -->
-
     <el-container>
       <el-aside width="200px"><Menu></Menu></el-aside>
       <el-container>
@@ -32,11 +22,11 @@ import Main from "./components/Main.vue";
     width: 100%;
     height: 100%;
   }
-  .el-header{
-    background:#4a4949;
+  ::v-deep .el-header {
+    padding: 0;
   }
-  .el-aside{
-    background:#212121
+  .el-aside {
+    background:#383839;
   }
 }
 </style>

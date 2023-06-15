@@ -12,9 +12,9 @@ router.beforeEach((to, from, next) => {
       next("/"); //进入首页
     } else {
       //如果访问的不是登录页面，要判断是否获取到了用户信息
-      console.log(store)
-      if (JSON.stringify(store.state.user.userinfo) === "{}") {
-        store.dispatch("user/userinfo");
+      console.log("要判断是否获取到了用户信息", store.state.user.userInfo);
+      if (JSON.stringify(store.state.user.userInfo) === "{}") {
+        store.dispatch("user/winUserInfo");
       }
       //如果访问的不是login
       next(); //进入访问的页面

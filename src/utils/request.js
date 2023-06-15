@@ -2,8 +2,10 @@ import axios from "axios";
 import md5 from "md5";
 import { ElMessage } from "element-plus";
 import { useStore } from "vuex";
+import selfStore from "@/store";
+import { isTokenTimeout } from "./auth.js";
 const store = useStore();
-// import store from "./store";
+
 // const store = useStore();
 const server = axios.create({
   baseURL: process.env.VUE_APP_BASE_API,
@@ -15,14 +17,21 @@ server.interceptors.request.use(
     const { icode, time } = getTestICode();
     config.headers.icode = icode;
     config.headers.codeType = time;
+
     //判断是否有token
-    if (store.state.user.token) {
-      config.headers.Authorization = `Bearer ${store.state.user.token}`;
+    if (selfStore.state.user.token) {
+      if (isTokenTimeout()) {
+        //为true就表示已过期
+        selfStore.dispatch('user/logout')
+        return Promise.reject(new Error("token失效"));
+      }
+      config.headers.Authorization = `Bearer ${selfStore.state.user.token}`;
     }
 
     return config;
   },
   (error) => {
+    alert("error");
     return Promise.reject(error);
   }
 );
@@ -41,6 +50,7 @@ server.interceptors.response.use(
   },
   (error) => {
     // TODO: 将来处理 token 超时问题
+    // alert("将来处理 token 超时问题");
     ElMessage.error(error.message); // 提示错误信息
     return false;
   }
