@@ -1,7 +1,7 @@
 <template>
   <div class="common-layout">
     <el-container>
-      <el-aside width="200px"><Menu></Menu></el-aside>
+      <el-aside><Menu></Menu></el-aside>
       <el-container>
         <el-header><NavBar /></el-header>
         <el-main><Main></Main></el-main>
@@ -10,6 +10,7 @@
   </div>
 </template>
 <script lang="ts" setup>
+import { ref } from "vue";
 import NavBar from "./components/NavBar.vue";
 import Menu from "./components/Menu.vue";
 import Main from "./components/Main.vue";
@@ -24,9 +25,6 @@ import Main from "./components/Main.vue";
   }
   ::v-deep .el-header {
     padding: 0;
-  }
-  .el-aside {
-    background:#383839;
   }
 }
 </style>

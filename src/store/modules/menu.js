@@ -1,10 +1,13 @@
 export default {
   namespaced: true,
   state: () => ({
-    isCollapse: "",
+    isCollapse: false,
   }),
   mutations: {
-    changeCollapse(state, collapse) {
+    expandMenu(state, collapse) {
+      state.isCollapse = collapse;
+    },
+    flodMenu(state, collapse) {
       state.isCollapse = collapse;
     },
   },
