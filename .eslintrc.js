@@ -20,7 +20,8 @@ module.exports = {
     'comma-dangle':'off',
     'vue/multi-word-component-names':'off',
     'prefer-promise-reject-errors':'off',
-    'spaced-comment':'off'
+    'spaced-comment':'off',
+    'no-const-assign':'off'
 
   }
 }

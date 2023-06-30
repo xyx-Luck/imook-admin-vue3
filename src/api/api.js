@@ -16,3 +16,11 @@ export const getUserInfo = () => {
     method: "get",
   });
 };
+
+//个人中心——获取项目功能
+export const getProjectFunction = () => {
+  return request({
+    url: "/user/feature",
+    method: "get",
+  });
+};

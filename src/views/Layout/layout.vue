@@ -4,7 +4,7 @@
       <el-aside><Menu></Menu></el-aside>
       <el-container>
         <el-header><NavBar /></el-header>
-        <el-main><Main></Main></el-main>
+        <el-main><Main> </Main></el-main>
       </el-container>
     </el-container>
   </div>
@@ -25,6 +25,9 @@ import Main from "./components/Main.vue";
   }
   ::v-deep .el-header {
     padding: 0;
+  }
+  .el-aside {
+    width: 200px;
   }
 }
 </style>
